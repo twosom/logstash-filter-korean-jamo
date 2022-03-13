@@ -13,6 +13,10 @@ before_install:
   - export LOGSTASH_CORE_PATH=$PWD/logstash-core
   - cd ../
 
-script:
+before_script:
   - echo "LOGSTASH_CORE_PATH=$LOGSTASH_CORE_PATH" >> gradle.properties
+script:
   - ./gradlew clean gem
+after_script:
+  - rm -rf ./logstash
+  - rm ./gradle.properties
