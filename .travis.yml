@@ -5,6 +5,7 @@ jdk:
 branches:
   only:
     - master
+    - feature/travis
 
 before_script:
   - git clone https://github.com/elastic/logstash.git
