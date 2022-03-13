@@ -6,14 +6,12 @@ branches:
   only:
     - master
 
-before_install:
+before_script:
   - git clone https://github.com/elastic/logstash.git
   - cd ./logstash
   - ./gradlew clean assemble
   - export LOGSTASH_CORE_PATH=$PWD/logstash-core
   - cd ../
-
-before_script:
   - echo "LOGSTASH_CORE_PATH=$LOGSTASH_CORE_PATH" >> gradle.properties
 script:
   - ./gradlew clean gem
