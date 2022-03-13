@@ -7,13 +7,14 @@ branches:
     - master
     - feature/travis
 
-before_script:
+before_install:
   - git clone https://github.com/elastic/logstash.git
   - cd ./logstash
   - ./gradlew clean assemble
   - export LOGSTASH_CORE_PATH=$PWD/logstash-core
   - cd ../
   - echo "LOGSTASH_CORE_PATH=$LOGSTASH_CORE_PATH" >> gradle.properties
+
 script:
   - ./gradlew clean gem
 after_script:
