@@ -65,7 +65,7 @@ echo "LOGSTASH_CORE_PATH=$LOGSTASH_CORE_PATH" >> gradle.properties
 9
 
 ``` shell
-export KOREAN_JAMO_PATH=$PWD/logstash-filter-korean_jamo-${현재 자모필터 플러그인 버전}.gem  
+export KOREAN_JAMO_PATH=$PWD/logstash-filter-korean_jamo-현재 자모필터 플러그인 버전.gem  
 ```
 
 로그스태시가 설치 된 폴더로 이동 후
