@@ -9,6 +9,7 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class KoreanJamoTest {
 
@@ -55,6 +56,27 @@ class KoreanJamoTest {
         }
 
         assertEquals(convertedValueCount, 6);
+    }
+
+    @Test
+    void singlePropertyTest() {
+        List<String> fieldList = List.of("field1");
+        Map<String, Object> configMap = new HashMap<>(Collections.singletonMap("chosung", Map.of("field", fieldList)));
+
+        Configuration config = new ConfigurationImpl(configMap);
+        Context context = new ContextImpl(null, null);
+
+        Filter filter = new KoreanJamo("test-id", config, context);
+        Event event = new org.logstash.Event();
+        TestMatchListener filterMatchListener = new TestMatchListener();
+
+        fieldList.forEach(e -> event.setField(e, "안녕하세요."));
+        for (String field : fieldList) {
+            Collection<Event> results = filter.filter(Collections.singletonList(event), filterMatchListener);
+            event.getField(field);
+            assertTrue(event.getField(field) instanceof Map);
+            assertEquals(((Map<?, ?>) event.getField(field)).get("chosung"), "ㅇㄴㅎㅅㅇ");
+        }
     }
 
 

@@ -11,11 +11,11 @@ public class KoreanJamo implements Filter {
 
     private final HanguelJamoMorphTokenizer morphTokenizer;
 
-    private static final PluginConfigSpec<Map<String, Object>> CHOSUNG = PluginConfigSpec.hashSetting("chosung");
+    private static final PluginConfigSpec<Map<String, Object>> CHOSUNG = PluginConfigSpec.hashSetting("chosung", Collections.emptyMap(), false, false);
 
-    private static final PluginConfigSpec<Map<String, Object>> JAMO = PluginConfigSpec.hashSetting("jamo");
+    private static final PluginConfigSpec<Map<String, Object>> JAMO = PluginConfigSpec.hashSetting("jamo", Collections.emptyMap(), false, false);
 
-    private static final PluginConfigSpec<Map<String, Object>> KOR_TO_ENG = PluginConfigSpec.hashSetting("jamo");
+    private static final PluginConfigSpec<Map<String, Object>> KOR_TO_ENG = PluginConfigSpec.hashSetting("kortoeng", Collections.emptyMap(), false, false);
 
 
     private final String id;
@@ -35,7 +35,9 @@ public class KoreanJamo implements Filter {
     private List<String> fieldSetting(Configuration configuration, Event event, PluginConfigSpec<Map<String, Object>> pluginConfigSpec) {
         List<String> fieldList = new ArrayList<>();
         Map<String, Object> hashSetting = configuration.get(pluginConfigSpec);
-        if (hashSetting.isEmpty() || !hashSetting.containsKey("field")) {
+        if (hashSetting.containsKey("field")
+                && hashSetting.get("field") instanceof List
+                && ((List<?>) hashSetting.get("field")).isEmpty()) {
             event.tag("'field' is empty on " + pluginConfigSpec.name());
         } else {
             Object field = hashSetting.get("field");
