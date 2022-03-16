@@ -1,4 +1,4 @@
-# Logstash Korean Jamo Filter [![Build Status](https://app.travis-ci.com/twosom/logstash-filter_korean_jamo.svg?branch=master)](https://app.travis-ci.com/twosom/logstash-filter_korean_jamo)
+# Logstash Korean Jamo Filter [![Build Status](https://app.travis-ci.com/twosom/logstash-filter-korean-jamo.svg?branch=master)](https://app.travis-ci.com/twosom/logstash-filter-korean-jamo)ci.com/twosom/logstash-filter_korean_jamo)
 
 이 플러그인은 [Logstash](https://github.com/elastic/logstash) 를 위한 필터 플러그인입니다.
 
