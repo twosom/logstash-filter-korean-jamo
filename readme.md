@@ -6,6 +6,9 @@
 
 이 플러그인은 한국어 인덱싱을 위한 Java기반의 logstash 의 한글 자모분리 필터입니다.
 
+정호욱 님의 [elasticsearch-analysis-jamo](https://github.com/HowookJeong/elasticsearch-analysis-jamo) 프로젝트의 자모분리 토크나이저를 기반으로
+제작되어
+
 자모분리 및 초성추출, 한영전환을 위한 구성을 손쉽게 할 수 있습니다.
 
 ## 사용방법
@@ -106,7 +109,6 @@ filter {
   }
 }
 ```
-
 
 ### 3. 예제
 
