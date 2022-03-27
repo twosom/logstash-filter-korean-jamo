@@ -65,12 +65,12 @@ public class KoreanJamo implements Filter {
 
     private void process(Event event, List<String> fieldList, FilterMatchListener matchListener, String type) {
         for (String field : fieldList) {
-            Object originalFieldValue = event.getField("[" + field + "]");
+            Object objectFieldValue = event.getField("[" + field + "]");
             String fieldValue = null;
-            if (originalFieldValue instanceof String) {
-                fieldValue = originalFieldValue.toString();
-            } else if (originalFieldValue instanceof Map) {
-                fieldValue = ((Map<?, ?>) originalFieldValue).get("original").toString();
+            if (objectFieldValue instanceof String) {
+                fieldValue = objectFieldValue.toString();
+            } else if (objectFieldValue instanceof Map) {
+                fieldValue = ((Map<?, ?>) objectFieldValue).get("original").toString();
             }
             if (event.getField(field) instanceof String) {
                 event.remove(field);
